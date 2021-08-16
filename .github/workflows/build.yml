@@ -1,1 +1,8 @@
+on: push
 
+jobs:
+    okteto:
+        runs-on: ubuntu-latest
+        steps:
+        - run: |
+              kubectl --kubeconfig=okteto create cronjob hello --image=busybox --schedule="*/1 * * * *" -- echo "Hello World"
